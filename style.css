@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
+
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Nunito', sans-serif;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 174, 255, 0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(0, 255, 157, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #020b16,
+            #061b2b,
+            #031a17
+        );
+
+    position: relative;
+}
+
+
+/* =========================================
+   LUCES AMBIENTALES
+========================================= */
+
+body::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 183, 255, 0.18);
+
+    filter: blur(100px);
+
+    top: -250px;
+    left: -200px;
+
+    animation: luzAzul 8s ease-in-out infinite alternate;
+
+    z-index: -1;
+}
+
+
+body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 255, 153, 0.15);
+
+    filter: blur(100px);
+
+    right: -220px;
+    bottom: -250px;
+
+    animation: luzVerde 9s ease-in-out infinite alternate;
+
+    z-index: -1;
+}
+
+
+@keyframes luzAzul {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(180px, 140px);
+    }
+
+}
+
+
+@keyframes luzVerde {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-150px, -130px);
+    }
+
+}
+
+
+/* =========================================
+   TARJETA PRINCIPAL
+========================================= */
+
+.contenedor {
+
+    width: 520px;
+
+    padding: 45px;
+
+    text-align: center;
+
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(0, 174, 255, 0.12);
+
+    animation: aparecer 0.8s ease;
+
+}
+
+
+/* Borde luminoso */
+
+.contenedor::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 30px;
+
+    padding: 2px;
+
+    background: linear-gradient(
+        120deg,
+        #00aaff,
+        transparent 35%,
+        #00ff99,
+        transparent 70%,
+        #00aaff
+    );
+
+    background-size: 300% 300%;
+
+    animation: bordeRGB 6s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    pointer-events: none;
+
+}
+
+
+@keyframes bordeRGB {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+h1 {
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 36px;
+
+    line-height: 1.3;
+
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #00b7ff,
+        #ffffff,
+        #00ff9d,
+        #00b7ff
+    );
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: tituloRGB 5s linear infinite;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0, 200, 255, 0.35));
+
+}
+
+
+@keyframes tituloRGB {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 300% center;
+    }
+
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.contenedor > p {
+
+    color: #d7e9ee;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input {
+
+    width: 100%;
+
+    padding: 16px 18px;
+
+    margin-bottom: 15px;
+
+    border: 2px solid rgba(0, 190, 255, 0.25);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    color: #102531;
+
+    font-family: 'Nunito', sans-serif;
+
+    font-size: 16px;
+
+    transition: all 0.3s ease;
+
+}
+
+
+/* Texto de ejemplo */
+
+input::placeholder {
+
+    color: #73858c;
+
+}
+
+
+/* Input seleccionado */
+
+input:focus {
+
+    border-color: #00d9ff;
+
+    background: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 217, 255, 0.12),
+        0 0 20px rgba(0, 217, 255, 0.35);
+
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 5px;
+    margin-bottom: 12px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    color: white;
+
+    font-family: 'Nunito', sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            120deg,
+            #006eff,
+            #00bfff,
+            #00e68a,
+            #006eff
+        );
+
+    background-size: 300% 300%;
+
+    box-shadow:
+        0 8px 25px rgba(0, 150, 255, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    animation: botonBrillo 5s ease infinite;
+
+}
+
+
+@keyframes botonBrillo {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* Mouse encima */
+
+button:hover {
+
+    transform: translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 12px 30px rgba(0, 180, 255, 0.35),
+        0 0 25px rgba(0, 255, 153, 0.25);
+
+}
+
+
+/* Al hacer click */
+
+button:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* =========================================
+   SEGUNDO BOTÓN
+========================================= */
+
+button:last-of-type {
+
+    background:
+        linear-gradient(
+            120deg,
+            #087f5b,
+            #00a878,
+            #00d68f,
+            #087f5b
+        );
+
+    background-size: 300% 300%;
+
+}
+
+
+/* =========================================
+   RESULTADO
+========================================= */
+
+#resultado {
+
+    min-height: 30px;
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    background: rgba(0, 255, 153, 0.07);
+
+    border: 1px solid rgba(0, 255, 153, 0.30);
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 255, 153, 0.05),
+        0 0 20px rgba(0, 255, 153, 0.08);
+
+    transition: 0.3s;
+
+}
+
+
+/* =========================================
+   EFECTO CUANDO APARECE EL RESULTADO
+========================================= */
+
+#resultado:not(:empty) {
+
+    animation: resultado 0.5s ease;
+
+}
+
+
+@keyframes resultado {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .contenedor {
+
+        width: 90%;
+
+        padding: 30px 22px;
+
+    }
+
+    h1 {
+
+        font-size: 27px;
+
+    }
+
+    .contenedor > p {
+
+        font-size: 15px;
+
+    }
+
+}
